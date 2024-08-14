@@ -1,0 +1,38 @@
+// Variables can be relabeled - this is for example purposes only. 
+function onSubmit() {
+
+    var vipIncidentChecked = g_form.getBooleanValue('u_vip_incident');
+    var lowPriorityCheck = g_form.getBooleanValue('u_low_priority');
+    var highPriorityCheck = g_form.getBooleanValue('u_hpriority');
+
+    // Message to add if VIP Incident bool checkbox is selected
+    if (vipIncidentChecked) {
+        var message = "Please note that this is a VIP Incident.";
+        var workNotes = g_form.getValue('work_notes');
+        var newWorkNotes = workNotes + '\n' + message;
+        g_form.setValue('work_notes', newWorkNotes);
+
+    } else
+
+        // If priorty bool is marked as LOW
+        if (lowPriorityCheck) {
+            var priorityMessage = "Please see that this is a LOW priority Incident.";
+            var priorityWorkNote = g_form.getValue('work_notes');
+            var workNotePriority = priorityWorkNote + '\n' + priorityMessage;
+            g_form.setValue('work_notes', workNotePriority);
+
+        } else
+
+            //If priority bool is marked as HIGH
+            if (highPriorityCheck) {
+                var messageNew = "Please see that this is a HIGH priority Incident.";
+                var workNotes = g_form.getValue('work_notes');
+                var hpWorkNote = workNotes + '\n' + messageNew;
+                g_form.setValue('work_notes', hpWorkNote);
+
+            }
+
+    // Return true to allow form submission to proceed with selected response 
+    return true;
+
+}
